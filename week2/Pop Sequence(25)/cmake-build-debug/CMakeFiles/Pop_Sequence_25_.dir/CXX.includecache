@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/huangweijun/Desktop/DataStructre/week2/Pop Sequence(25)/main.cpp
+iostream
+-
+stack
+-
+queue
+-
+cstdio
+-
+

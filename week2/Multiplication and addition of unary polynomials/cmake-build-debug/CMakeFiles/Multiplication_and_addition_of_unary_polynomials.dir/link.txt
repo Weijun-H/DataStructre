@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/Multiplication_and_addition_of_unary_polynomials.dir/main.cpp.o  -o Multiplication_and_addition_of_unary_polynomials 

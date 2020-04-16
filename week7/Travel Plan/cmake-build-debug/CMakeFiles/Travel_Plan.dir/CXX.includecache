@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/huangweijun/Desktop/DataStructre/week7/Travel Plan/main.cpp
+iostream
+-
+cstdio
+-
+algorithm
+-
+

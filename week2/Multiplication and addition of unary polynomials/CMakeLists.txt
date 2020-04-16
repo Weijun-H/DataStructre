@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.13)
+project(Multiplication_and_addition_of_unary_polynomials)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(Multiplication_and_addition_of_unary_polynomials main.cpp)

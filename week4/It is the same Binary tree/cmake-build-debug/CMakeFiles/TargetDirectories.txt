@@ -1,0 +1,3 @@
+/Users/huangweijun/Desktop/DataStructre/week4/It is the same Binary tree/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/huangweijun/Desktop/DataStructre/week4/It is the same Binary tree/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/huangweijun/Desktop/DataStructre/week4/It is the same Binary tree/cmake-build-debug/CMakeFiles/It_is_the_same_Binary_tree.dir

@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/huangweijun/Desktop/DataStructre/week5/File Transfer(25)/main.cpp
+iostream
+-
+vector
+-
+cstdio
+-
+

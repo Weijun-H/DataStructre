@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/huangweijun/Desktop/DataStructre/week3/List Leaves (25分)/main.cpp
+iostream
+-
+vector
+-
+cstdio
+-
+queue
+-
+

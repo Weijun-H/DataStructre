@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/huangweijun/Desktop/DataStructre/week6/ Saving James Bond - Easy Version (25)/main.cpp
+cmath
+-
+cstdio
+-
+cstdlib
+-
+cstring
+-
+iostream
+-
+

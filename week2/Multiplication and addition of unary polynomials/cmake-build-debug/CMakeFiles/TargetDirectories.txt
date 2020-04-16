@@ -1,0 +1,3 @@
+/Users/huangweijun/Desktop/DataStructre/week2/Multiplication and addition of unary polynomials/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/huangweijun/Desktop/DataStructre/week2/Multiplication and addition of unary polynomials/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/huangweijun/Desktop/DataStructre/week2/Multiplication and addition of unary polynomials/cmake-build-debug/CMakeFiles/Multiplication_and_addition_of_unary_polynomials.dir

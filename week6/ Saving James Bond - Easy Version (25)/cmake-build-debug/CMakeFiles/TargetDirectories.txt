@@ -1,0 +1,3 @@
+/Users/huangweijun/Desktop/DataStructre/week6/ Saving James Bond - Easy Version (25)/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/huangweijun/Desktop/DataStructre/week6/ Saving James Bond - Easy Version (25)/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/huangweijun/Desktop/DataStructre/week6/ Saving James Bond - Easy Version (25)/cmake-build-debug/CMakeFiles/_Saving_James_Bond___Easy_Version__25_.dir

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="It_is_the_same_Binary_tree"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/huangweijun/Desktop/DataStructre/week4/It is the same Binary tree/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/huangweijun/Desktop/DataStructre/week4/It is the same Binary tree/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/huangweijun/Desktop/DataStructre/week4/It is the same Binary tree/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="It_is_the_same_Binary_tree">
+				<Option output="/Users/huangweijun/Desktop/DataStructre/week4/It is the same Binary tree/cmake-build-debug/It_is_the_same_Binary_tree" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/huangweijun/Desktop/DataStructre/week4/It is the same Binary tree/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 It_is_the_same_Binary_tree"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="It_is_the_same_Binary_tree/fast">
+				<Option output="/Users/huangweijun/Desktop/DataStructre/week4/It is the same Binary tree/cmake-build-debug/It_is_the_same_Binary_tree" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/huangweijun/Desktop/DataStructre/week4/It is the same Binary tree/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 It_is_the_same_Binary_tree/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/huangweijun/Desktop/DataStructre/week4/It\ is\ the\ same\ Binary\ tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/huangweijun/Desktop/DataStructre/week4/It is the same Binary tree/main.cpp">
+			<Option target="It_is_the_same_Binary_tree"/>
+		</Unit>
+		<Unit filename="/Users/huangweijun/Desktop/DataStructre/week4/It is the same Binary tree/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
