@@ -1,4 +1,6 @@
-
+最近在重新复习数据结构，笔记是根据中国MOOC上浙大的数据结构课程整理的
+不定期更新
+<!-- toc -->
 
 ### 前言
 
@@ -685,4 +687,915 @@ ElementType Pop(Stack S){
 - 函数调用及递归实现
 - 深度优先搜索
 - 回溯算法
+
+### 3.队列
+
+#### 3.1什么是队列
+
+队列（Queue）：具有一定操作约束的线性表
+
+- 插入和删除操作：只能在一端（front）插入，而在另一端（rear）删除
+- 数据插入：入队列（AddQ）
+- 数据删除：出队列（DeleteQ）
+- 先进先出：FIFO
+
+#### 3.2队列的抽象数据类型描述
+
+- 类型名称：队列（Queue）
+- 数据对象集：一个有 0 个或多个元素的有穷线性表
+- 操作集：长度为 MaxSize 的队列 Q∈Queue，队列元素 item∈ElementType
+
+队列的基本操作主要有：
+
+- `Queue CreateQueue(int MaxSize)`：生成长度为 MaxSize 的空队列
+- `int IsFull(Queue Q)`：判断队列 Q 是已满
+- `void AddQ(Queue Q,ElementType item)`：将数据元素 item 插入队列 Q 中
+  int IsEmpty(Queue Q)：判断队列 Q 是否为空
+- `ElementType DeleteQ(Queue Q)`：将队头数据元素从队列中删除并返回
+
+#### 3.3存储方式
+
+##### 3.3.1顺序存储实现
+
+队列的顺序存储结构通常由一个一维数组和一个记录队列头元素位置的变量 front 以及一个记录队列尾元素位置的变量 rear 组成，其中 front 指向整个队列的头一个元素的再前一个，rear 指向的是整个队列的最后一个元素，从 rear 入队，从 front 出队，且仅使用 n-1 个数组空间
+
+- 队列空满状态判别？
+  - 使用额外标记：Size或者tag域
+  - 仅使用n-1个数组空间
+
+```C
+#defind MaxSize <储存数据元素的最大个数>
+struct QNode{
+  ElementType Data [Maxsize];
+  int rear;
+  int front;
+};
+typedef struct QNode *Queue;
+
+void AddQ(Queue PtrQ, ElementType itrm){
+  if(PtrQ->rear+1)%MaxSize == PtrQ->front{
+    prinf("队列满");
+    return;
+  }
+  PtrQ->rear = (PtrQ->rear+1)%MaxSize;
+  PtrQ->Data[PtrQ->rear] = item;
+}
+ 
+ElementType DeleteQ(Queue PtrQ){
+  if(PtrQ->front == PtrQ->rear){
+    printf("队列空");
+  }else{
+    PtrQ->front = (PtrQ->front+1)%MaxSize;
+    return PtrQ->Data[PtrQ->front];
+  }
+}
+  
+```
+
+##### 3.3.2 队列的链式存储实现
+
+ 队列的链式存储结构也可以用一个单链表实现。插入和删除操作分别在链表的两头进行，front 在链表头，rear在链表尾，从 rear入队，从front出队
+
+```mermaid
+graph LR
+A(front)-->B(3)-->E(2)-->C(1)
+D(rear)-->C
+```
+
+```C
+struct Node{
+  ElementType Data;
+  struct Node *Next;
+};
+struct QNode{
+  struct Node *rear;
+  struct Node *front;
+};
+typedef struct QNode *Queue;
+Queue PtrQ;
+
+ElementType DeleteQ(Queue PtrQ){
+  struct Node *FrontCell;
+  ElementType FrontElem;
+  if(PtrQ->front == NULL){
+    printf("队列空");
+    return ERROR;
+  }
+  FrontCell = PtrQ->rear;
+  if(PtrQ->front == PtrQ->rear){/*若队列只有一个元素*/
+    PtrQ->front = PtrQ->rear =NULL;
+  }else{
+    PtrQ->front = PtrQ->front->Next;
+  }
+  FrontElem = FrontCell->Data;
+  free(FrontCell);
+  return FrontE;em;
+}
+```
+
+## 三、非线性结构
+
+### 3.树
+
+#### 3.1树与树的表示
+
+##### 3.1.1树的定义
+
+树（Tree）：$n（n≥0）$个结点构成的有限集合
+
+当 n=0 时，称为**空树**
+
+对于任意一个非空树。它具有以下性质：
+
+- 树中有一个称为“根”的特殊结点，用r表示
+- 其余结点m个非零互不相交的特殊结点，其中每个集合本身又是一颗树，称为原来树的“子树”，只有一个父结点
+
+##### 3.1.2树的基本术语
+
+- 结点的度（Degree）：结点的子树个数
+- 树的度：树的所有结点中最大的度数
+- 叶结点（Leaf）：度为 0 的结点
+- 父结点（Parent）：有子树的结点是其子树的根结点的父结点
+- 子结点（Child）：若 A 结点是 B 结点的父结点，则称 B 结点是 A 结点的子结点，也称孩子结点
+- 兄弟结点（Sibling）：具有同一父结点的各个结点彼此是兄弟结点
+- 路径长度：路径所包含边的个数
+- 路径长度：从结点$n_1$到$n_k$的路径为一个结点序列$n_1,n_2,...,n_k$
+- 祖先结点（Ancestor）：沿树根到某一结点路径上的所有结点都是这个结点的祖先结点
+- 子孙结点（Descendant）：某一结点的子树中的所有结点是这个结点的子孙
+- 结点的层次（Level）：规定根结点在 1 层，其他任一结点的层数是其父结点的层数加一
+- 树的深度（Depth）：树中所有结点中的最大层次是这棵树的深度
+
+##### 3.1.2树的表示
+
+- 儿子兄弟表示法
+
+#### 3.2二叉树及其村粗
+
+##### 3.2.1定义
+
+- 二叉树 T：一个有穷的结点集合
+
+- 这个集合可以为空
+
+- 若不为空，则它是由根结点和称为其左子树$T_L$ 和右子树$T_R$的两个不相交的二叉树组成
+- 二叉树的子树有左右顺序之分
+
+##### 3.2.2二叉树几个重要性质
+
+- 一个二叉树第i层的最大结点数为$2^{i-1},i \geq1$
+- 深度为k的二叉树有最大结点总数为：$2^{k}-1,k\geq1$
+- 对任何非空二叉树T，若$n_0$表示叶结点的个数，$n_2$表示度为2的非叶结点个数，那么两者满足关系$n_0=n_2+1$
+
+##### 3.2.2抽象数据类型定义
+
+- 数据对象集：一个有穷的结点集合，若不为空，则由根结点和其左、右二叉子树组成
+- 操作集：BT ∈ BinTree，Item ∈ ElementType
+- 主要操作有：
+  - Boolean IsEmpty(BinTree BT)：判别 BT 是否为空
+  - void Traversal(BinTree BT)：遍历，按某顺序访问每个结点
+  - BinTree CreatBinTree()：创建一个二叉树
+- 常用的遍历方法有：
+  - void PreOrderTraversal(BinTree BT)：先序——根、左子树、右子树
+  - void InOrderTraversal(BinTree BT)：中序——左子树、根、右子树
+  - void PostOrderTraversal(BinTree BT)：后序——左子树、右子树、根
+  - void LevelOrderTraversal(BinTree BT)：层次遍历，从上到下、从左到右
+
+##### 3.2.3二叉树的存储结构
+
+1. 顺序存储结构
+
+   1. 完全二叉树
+
+   - 非根结点（序号i>1）的父结点的序号为$\lfloor i/2 \rfloor $;
+   - 结点（序号为i）的左孩子结点的序号为2i，（若$2i\leq n $，否则没有左孩子）
+   - 结点（序号为i）的右孩子结点的序号为2i+1
+
+   2.一般二叉树也可采用顺序结构，但是浪费空间
+
+2. 链表存储
+
+```c++
+typedef struct TreeNode *BinTree;
+struct TreeNode{
+	Element Data;  // 存值 
+	BinTree Left;    // 左儿子结点 
+	BinTree Right;   // 右儿子结点 
+};
+```
+
+```mermaid
+classDiagram
+class BinaryTree
+BinaryTree: Element
+BinaryTree: LEft
+BinaryTree: Right
+```
+
+#### 3.3二叉树的遍历
+
+##### 3.3.1先序遍历
+
+遍历过程：
+
+1. 先访问根结点
+2. 先序遍历其左子树
+3. 先序遍历其右子树
+
+- 递归实现
+
+```c++
+void PreOrderTraversal(BinTree BT){
+  if(BT){
+    printf("%d",BT->Data);
+    PreOrderTraversal(BT->Left);
+    PreOrderTraversal(BT->Right);    
+  }
+}
+```
+
+- 非递归实现
+
+```c++
+void PreOrderTraversal(BinTree BT){
+  BinTree T=BT;
+  Stack S = CreatStack(MaxSize);
+  while(T || !IsEmpty(S)){
+    while(T){
+      Push(S,T);
+      T = T->Left;
+      printf("%5d",T->Data);
+    }
+    if(!Isempty(S)){
+      T = Pop(S);
+      T = T->Right;
+    }
+  }
+}
+```
+
+
+
+##### 3.3.2中序遍历
+
+遍历过程：
+
+1. 中序遍历其左子树
+2. 访问根结点
+3. 中序遍历其右子树
+
+- 递归实现
+
+```c++
+void InOrderTraversal(BinTree BT){
+	if(BT){
+		InOrderTraversal(BT->Left);  // 进入左子树 
+		printf("%d",BT->Data);  // 打印根 
+		InOrderTraversal(BT->Right);  // 进入右子树 
+	} 
+}
+```
+
+- 非递归实现
+
+```c++
+void InOrderTraversal(BinTree BT){
+  BinTree T=BT;
+  Stack S = CreatStack(MaxSize);
+  while(T || !IsEmpty(S)){
+    while(T){
+      Push(S,T);
+      T = T->Left;
+    }
+    if(!Isempty(S)){
+      T = Pop(S);
+      printf("%5d",T->Data);
+      T = T->Right;
+    }
+  }
+}
+```
+
+
+
+##### 3.3.3后序遍历
+
+遍历过程：
+
+1. 后序遍历其左子树
+2. 后序遍历其右子树
+3. 访问根结点
+
+- 递归实现
+
+```c++
+void PostOrderTraversal(BinTree BT){
+	if(BT){
+		PostOrderTraversal(BT->Left);  // 进入左子树 
+		PostOrderTraversal(BT->Right);  // 进入右子树 
+		printf("%d",BT->Data);  // 打印根 
+	} 
+}
+```
+
+##### 3.3.4层序遍历
+
+遍历过程：从上至下，从左至右访问所有结点
+
+队列实现过程：
+
+1. 根结点入队
+2. 从队列中取出一个元素
+3. 访问该元素所指结点
+4. 若该元素所指结点的左孩子结点非空，左孩子结点入队
+5. 若该元素所指结点的右孩子结点非空，右孩子结点入队
+6. 循环 1 - 4，直到队列中为空
+
+```C++
+void LevelOrderTraversal (BinTree BT){
+  Queue Q;
+  BinTree T;
+  Q = CreatQueue(MaxSize)
+    AddQ(Q,BT);
+  while(!IsEmptyQ(Q)){
+    T = DeleteQ(Q);
+    printf("%d\n",T->Data);
+    if(T->Left)AddQ(Q,T->Left);
+    if(T->Right)AddQ(Q,T->Right);
+  }
+}
+```
+
+##### 3.3.5几个例子
+
+- 遍历二叉树的应用：输出二叉树中的叶子结点。（遍历算法+检测结点是否为空）
+
+```c++
+void  FindLeaves(BinTree BT){
+	if(BT){
+		if( !BT->Left && !BT->Right)
+			printf("%d",BT->Data);  // 打印叶子结点
+		FindLeaves(BT->Left);  // 进入左子树 
+		FindLeaves(BT->Right);  // 进入右子树 
+	}
+} 
+
+```
+
+- 二叉树的高度（后序遍历）
+
+```c++
+int  GetHeight(BinTree BT){
+	int hl,hr,maxh;
+	if(BT){
+		hl = GetHeight(BT->Left);  // 求左子树高度 
+		hr = GetHeight(BT->Right);  // 求右子树高度 
+		maxh = (hl>hr)?hl:hr;
+		return maxh+1;  // 当前结点高度为左右子树最大的高度+1 
+	}else
+		return 0;
+} 
+```
+
+- 二元运算表达式树及其遍历
+- 由两种遍历序列确定二叉树（必须要有中序遍历）
+
+#### 3.4二叉树搜索树
+
+##### 3.4.1定义
+
+一颗二叉树，可以为空；如果不为空，满足以下性质：
+
+- 非空左子树的所有键值小于其根结点的键值
+- 非空右子树的所有键值大于其根结点的键值
+- 左、右子树都是二叉搜索树
+
+##### 3.4.2二叉搜索树操作的特殊函数
+
+- Position Find( ElementType X,BinTree BST):从二叉搜索树BST中查找元素X，返回其所在结点的地址；
+
+```c++
+Position Find(ElementType X, BinTree BST){
+  if(!BST)return NULL;
+  if(X>BST->Data)return Find(X,BST->Right);
+    Else if(X<BST->Data)return Find(X,BST->Left);
+  else
+    return BST;
+}
+
+Posistion IterFind(ElementType X,BinTree BST){
+  while(BST){
+    if(X>BST->Data){
+      BST = BST->Right;
+    }
+    else if(X < BST->Data){
+      BST = BST->left;
+    }
+    else 
+      return BST;
+  }
+  return NULL;
+}
+```
+
+
+
+- Position FindMin(BinTree BST):从二叉搜索树BST中查找并返回最小元素所在结点的地址；
+
+```c++
+Position FindMin(BinTree BST){
+  if(!BST)return NULL;
+  else if(!BST->Left)
+    return BST;
+  else 
+    return FindMin(BST->Left);
+}
+```
+
+- Position FindMax(BinTree BST):从二叉搜索树BST中查找并返回最大元素所在结点的地址;
+
+```c++
+Position FindMax(BinTree BST){
+  if(BST){
+    while(BST->Right)BST = BST->Right;
+  }
+  return BST;
+}
+```
+
+##### 3.4.3二叉搜索树的插入
+
+```c++
+BinTree Insert(ElementType X,BinTree BST){
+  if(!BST){
+    BST = malloc(sizeof(struct TreeNode));
+    BST->Data = X;
+    BST->Left = BST->Right = NULL;
+  }else{
+    if(X < BST->Data){
+      BST->Left = Insert(X,BST->Left);
+    }
+    else if(X > BST->Data){
+      BST->Rigth = Insert(X,BST->Right);
+    }
+  }
+  return BST;
+}
+```
+
+##### 3.4.3二叉搜索树的删除
+
+考虑三种情况：
+
+1. 叶结点
+2. 只有一个孩子
+3. 有左、右两颗子树(找**左子树最大**或者**右子树最小**)
+
+```c++
+BinTree Delete(ElementType X,BinTree BST){
+  Position Tmp;
+  if(!BST)printf("要删除的元素未找到");
+  else if(X<BST->Data){
+    BST->Left = Delete(X,BST->Left);
+  }
+  else if(X<BST->Data){
+    BST->Right = Delete(X,BST->Right);
+  }
+  else{
+    if(BST->Left && BST->Rigth){
+      Tmp = FindMin(BST->Right);
+      BST->Data = Tmp->Data;
+      BST->Right = Delete(BST->Data,BST->Right);
+    }
+    else{
+      Tmp = BST;
+      if(!BST->Left){
+        BST = BST->Right;
+      }
+      else if(!BST->Right){
+        BST = BST->Left;
+      }
+      free(Tmp);
+    }
+  }
+  return BST;
+}
+```
+
+
+
+#### 3.5平衡二叉树
+
+##### 3.5.1什么是平衡二叉树(根结点高度为0)
+
+空树，或者任一结点左、右子树高度差的绝对值不超过1，即$|BF(T)|\le1$
+
+$n_h=n_{h-1}+n_{h-2}+1$
+
+##### 3.5.2平衡二叉树的调整
+
+
+
+#### 3.6堆
+
+##### 3.6.1什么是堆
+
+优先队列：特殊的“队列”，取出元素的顺序是依照元素的优先权（关键字）大小，而不是进入队列的先后顺序。
+
+两个特性
+
+- 结构性：用**数组**表示的**完全二叉树**
+- 有序性：任一结点的关键字是其子树所有结点的最大值（或最小值）
+  - “最大堆(MaxHeap)”，也称"大顶堆"：最大值
+  - “最小堆(MinHeap)”，也称"小顶堆"：最小值
+
+##### 3.6.2堆的抽象数据类型描述
+
+```c++
+typedef struct HeapStruct "MaxHeap";
+struct HeapStruct{
+  ElementType "Element";
+  int Size;
+  int Capacity;
+};
+```
+
+
+
+主要操作有：
+
+- MaxHeap Create(int MaxSize)：创建一个空的最大堆
+
+```c++
+MaxHeap Create(int MaxSize){
+  MaxSize H = malloc(sizeof (struct HeapStruct));
+  H->Elements = malloc((MaxSize+1)*sizeof(ElementType));
+  H->Size = 0;
+  H->capacity = MaxSize;
+  H->Element[0] = MaxData;
+  return H;
+}
+```
+
+- Boolean IsFull(MaxHeap H)：判断最大堆 H 是否已满
+- Boolean Insert(MaxHeap H,ElementType item)：将元素 item 插入最大堆 H$T(N)=O(log(n))$
+
+```c++
+void Insert(MaxHeap H,ElementType item){
+  int i;
+  if(IsFull(H)){
+    prints("最大堆已满");
+    return;
+  }
+  i = ++H->Size;
+  for(; H->Element[i/2] < item; i/=2){
+    H->Element[i] = H->Elements[i/2];
+  }
+  H->Element[i] = item;
+}
+```
+
+- Boolean IsEmpty(MaxHeap H)：判断最大堆 H 是否为空
+- ElementType DeleteMax(MaxHeap H)：返回 H 中最大元素（高优先级）
+
+```c++
+Element DeleteMax(MaxHeap H){
+  int parent, Child;
+  ElementType MaxItem, temp;
+  if(IsEmpty(H)){
+    printf("最大堆已为空");
+    return;
+  }
+  Maxitem = H->Element[1];
+  temp = H->Element[H->Size--];
+  for(parent=1; Parent*2<=H->Size;Parent=Child){
+    child = Parent * 2;
+    if((Child!=H->Size)&&(H->Elements[Child] < H->Elements[Child+1]))Child++;
+    if(temp >= H->Element[Child])break;
+    else H->Elements[Parent] = H->Elements[Child];
+  }
+  H->Elements[Parent] = temp;
+  return MaxItem;
+}
+```
+
+#### 3.7哈夫曼树与哈夫曼编码
+
+##### 3.7.1哈夫曼树的定义
+
+带权路径长度（WPL）:设二叉树有n个叶子结点，每个叶子结点带有权值$w_k$，从根结点到每个叶子结点的长度为$l_k$，则每个叶子结点的带权路径长度之和就是：$WPL=\sum{w_kl_l}$
+
+哈夫曼树就是最优WPL
+
+##### 3.7.2哈夫曼树的构造 $O(NlogN)$
+
+```c++
+typedef struct TreeNode *HuffmanTree;
+struct TreeNode{
+  int Weight;
+  HuffmanTree Left, Right;
+}
+HuffmanTree Huffman(MinHeap H){
+  int i;
+  HuffmanTree T;
+  BuildMinHeap(H);
+  for(i = 1; i<H->Size; i++){
+    T = malloc(sizeof(struct TreeNode));
+    T->Left = DeleteMin(H);
+    T->Right = DeleteMin(H);
+    T->Weigth = T->Left->Weight + T->Right->Weight;
+    Insert(H,T);
+  }
+  T = DeleteMin(H);
+  return T;
+}
+```
+
+##### 3.7.3哈夫曼数的特点
+
+- 没有度为1的结点
+- n个叶子结点的哈夫曼树共有2n-1个
+- 哈夫曼树的任意非叶结点的左右子树交换后仍然是哈夫曼树
+- 对于同一组权值存在不同构的两个哈夫曼树
+
+##### 3.7.4哈夫曼编码（不等长编码）
+
+根据频率构造
+
+#### 3.8并查集
+
+##### 3.8.1表示方法
+
+数组存储
+
+```c++
+typedef struct{
+  ElementType Data;
+  int Parent;
+}SetType;
+```
+
+##### 3.8.2集合运算
+
+- 查找某个元素所在的集合
+
+```c++
+int Find(SetType S[], ElementType X){
+  int i;
+  for(i=0; i<MaxSize && S[i].Data != X; i++);
+  if(i >= MaxSize) return -1;
+  for(;S[i].Parent >= 0; i = S[i].Praent);
+  return i;
+}
+```
+
+- 并运算
+
+```c++
+void Union(SetType S[], ElementType X1, ElementType X2){
+  int Root1, Root2;
+  Root1 = Find(S,X1);
+  Root2 = Find(S,X2);
+  if(Root1 != Root2)S[Root2].Parent = Root1;
+}
+```
+
+### 4.图
+
+#### 4.1什么是图
+
+##### 4.1.1定义
+
+表示多对多的关系
+
+包含
+
+- 一组顶点：通常用V（Vertex）表示顶点集合
+- 一组边：通常用E（Edge）表示边的集合
+  - 边是顶点对
+  - 有向边<v,w>表示从v指向w的边
+  - 不考虑重边和自回路
+
+##### 4.1.2抽象数据类型定义
+
+- 类型名称：图
+
+- 数据对象集：G（V，E）由一个非空的有限顶点集合v和一个有限边集合E组成
+
+- 操作集：对于任意图$G\in Graph$，以及$v\in V,e\in E$
+
+  - Graph Create():
+
+  - Graph InsertVertex(Graph G,Vertx v):
+
+  - Graph InsertEdge(Graph G,Edge e):
+
+  - void DFS(Graph G,Vertex v):
+
+  - void BFS(Graph G,Vertex v):
+
+    ......
+
+##### 4.1.3常见术语
+
+- 无向树
+- 有向树
+
+##### 4.1.4表示方法
+
+1.邻接矩阵
+
+用一个长度为N(N+1)/2的一维数组A存储${G_{00},G_{10},G_{11},...}$，则$G_{ij}$在A中对应的下标为：（i*（i+1）/2+j）
+
+2.邻接表
+
+#### 4.2图的遍历
+
+##### 4.2.1DFS
+
+```c++
+void DFS(Vertex V){
+  visited[V] = true;
+  for (V的每个邻接点W)
+    if（！visited[W]）
+    		DFS(W);
+}
+```
+
+类似于先序遍历
+
+- 用邻接表存储图，有$O(N+E)$
+- 用邻接矩阵存储图，有$O(N^2)$
+
+##### 4.2.2BFS
+
+类似于层序遍历
+
+```c++
+void BFS(Vertex V){
+  visited[V] = true;
+  Enqueue(V,Q);
+  while(!IsEmpty(Q)){
+    V = Dequeue(Q);
+    for(V的每个邻接点W)
+      if(!visited[W]){
+        visited[W] = true;
+        Enqueue(W,Q);
+      }
+  }
+}
+```
+
+- 用邻接表存储图，有$O(N+E)$
+- 用邻接矩阵存储图，有$O(N^2)$
+
+#### 4.3最短路径
+
+在网络中，求两个不同顶点之间的所有路径中，边的权值之和最小的那一条路径
+
+##### 4.3.1单源最短路径问题
+
+###### 4.3.1.1无权图的单源最短路算法
+
+按照**递增**的顺序找出到各个顶点的最短路径
+
+```c++
+void Unweighted(Vertex S){
+  Enqueue(S,Q);
+  while(!IsEmpty(Q)){
+    V = Dequeue(Q);
+    for(V的每个邻接点W)
+      if(dist[W]==-1){
+        dist[W] = dist[V]+1;
+        path[W] = V;
+        Enqueue(W,Q);
+      }
+  }
+}
+```
+
+$T=O(|V|+|E|)$
+
+###### 4.3.1.2有权图的单源最短路算法
+
+- Dijkstra算法
+
+```c++
+void Dijkstra(Vertex s){
+  while(1){
+    V = 未收录顶点中dist最小者;
+    if(这样的V不存在)break;
+    collected[V] = true;
+    for(V的每个邻接点)
+      if(collected[W]==false)
+        if(dist[V]+E[V][W] < dist[W]){
+          dist[W] = dist[V]+E[V][W];
+          path[W] = V;
+        }
+  }
+}
+```
+
+##### 4.3.2多源最短路径问题
+
+- Floyd算法
+
+```c++
+void Floyd(){
+  for(i=0; i<N; i++)
+    for(j=0; j<N; j++){
+      D[i][j] = G[i][j];
+      path[i][j] = -1;
+    }
+  for(k=0; k<N; K++)
+    for(i=0; i<N; i++)
+      for(j=0; j<N; j++){
+        if(D[i][k]+D[k][j]<D[i][j]){
+          D[i][j] = D[i][k]+D[k][j];
+          path[i][j] = k;
+        }
+      }
+  
+}
+```
+
+#### 4.4 最小生成树(Minimum Spanning Tree)
+
+##### 4.4.1 什么事最小生成树
+
+- 是一棵树
+  - 无回路
+  - |V|个顶点一定有|V|-1条边
+- 是生成树
+  - 包含全部顶点
+  - |V|-1条边都在图里
+- 边的权重和最小
+
+##### 4.4.2 解决方法——贪心算法
+
+###### 4.4.2.1 Prim算法（生长）
+
+```c++
+void Prim(){
+  MST = {s};
+  while(1){
+    V = 未收录顶点中dist最小者;
+    if(这样的V不存在)break;
+    将V收录进MST: dist[V] = 0;
+    for(V的每个邻接点W){
+      if(W未被收录){
+        if(E[V][W]<dist[W]){
+          dist[W] = E[V][W];
+          parent[W] = V;
+        }
+      }
+    }
+  }
+  if(MST中收的顶点不到V个)
+    Error("生成树不存在");
+}
+```
+
+###### 4.4.2.2 Kruskal算法(直接选择最小边)——稀疏图
+
+```c++
+void Kruskal(Graph G){
+  MST = {};
+  while(MST中不到V-1条边 && E中还有边){
+    从E中取一条权重最小的边E[V][W];
+    将E[V][W]从E中删除;
+    if(E[V][W]不在MST中构成回路){//并查集
+      将E[V][W]加入MST;
+    }
+    else{
+      彻底无视E[V][W];
+    }
+  }
+}
+```
+
+#### 4.5 拓扑排序
+
+##### 4.5.1 什么是拓扑排序
+
+- 拓扑序
+
+如果图中从V到W有一条有向路径，则V一定排在W之前。满足此条件的顶点序列称为一个拓扑序，获得拓扑序的过程就是**拓扑排序**
+
+**AOV**如果有合理的拓扑序，则必定是有向无环图(Directed Acyclic Graph,DAG)
+
+4.5.2伪代码实现
+
+```c++
+void TopSort(){
+  for (cnt = 0; cnt < |V|; cnt++){
+    V = 未输入的入度为0的顶点;//随时将入读为0的顶点放入一个容器
+    if(这样的V不存在){
+      Error("图中有回路");
+      return;
+    }
+    输出V,或者记录V的输出序号;
+    for(V的每个邻接点W)Indegree[W]--;
+  }
+}
+```
 
